@@ -1,6 +1,6 @@
 # Stock Recommendation Agent
 
-A multi-agent system that provides stock recommendations for NYSE-listed stocks using **free LLM providers** and AI agents for research, market data analysis, news analysis, and trading recommendations.
+A multi-agent system that provides stock recommendations for NYSE-listed stocks using Ollama and AI agents for research, market data analysis, news analysis, and trading recommendations.
 
 ## Features
 
@@ -8,8 +8,7 @@ A multi-agent system that provides stock recommendations for NYSE-listed stocks 
 - **Market Data Agent**: Gathers current market data, trends, and technical indicators
 - **News Analyst Agent**: Analyzes recent news and sentiment for selected stocks
 - **Price Recommender Agent**: Provides buy/sell recommendations with target prices
-- **Free LLM Support**: Works with multiple free AI providers
-- **Graceful Fallbacks**: Automatically switches between available providers
+- **LLM Support**: Works with multiple LLM providers
 
 ## Quick Start
 
