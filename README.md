@@ -103,9 +103,13 @@ The supervisor agent acts as the central coordinator, managing the sequential ex
 - Time horizon for the trade
 - Detailed reasoning based on all collected data
 
+## 🔌 Model Context Protocol (MCP) Integration
+
+### What is MCP?
+
+Model Context Protocol (MCP) is a standardized way for AI applications to interact with external data sources and tools. It provides a unified interface for accessing real-time market data, news, and other financial information.
 
 ### Bright Data MCP Server
-Model Context Protocol (MCP) is a standardized way for AI applications to interact with external data sources and tools. It provides a unified interface for accessing real-time market data, news, and other financial information.
 
 This system integrates with Bright Data's MCP server to access:
 
@@ -199,7 +203,98 @@ Each agent receives context from previous agents:
 - **News Analyst**: Receives stocks + market data + user context
 - **Price Recommender**: Receives stocks + market data + news analysis + user context
 
+## 🧠 LLM Integration and Fallback Strategy
 
+### Primary LLM: Ollama (Local)
+
+**Advantages**:
+- 100% free and runs locally
+- No API rate limits
+- Complete privacy
+- No internet dependency after setup
+
+**Setup**:
+```bash
+# Install Ollama
+brew install ollama
+
+# Start service
+brew services start ollama
+
+# Pull model
+ollama pull llama3.2
+```
+
+### Fallback LLM: OpenAI
+
+**When Used**:
+- Ollama not available
+- Local model performance issues
+- Need for specific model capabilities
+
+**Configuration**:
+```python
+def get_large_language_model():
+    # Try Ollama first
+    try:
+        return init_chat_model(model="ollama:llama3.2")
+    except Exception:
+        # Fallback to OpenAI
+        return init_chat_model(model="openai:gpt-4o-mini")
+```
+
+## 📁 Project Structure Deep Dive
+
+```
+stock-recommendation-agent/
+├── main.py                    # Application entry point and agent orchestration
+├── utils.py                   # LLM setup, prompt loading, and utility functions
+├── prompts/                   # Agent behavior definitions
+│   ├── supervisor_prompt.txt  # Workflow coordination instructions
+│   ├── stock_finder_prompt.txt    # Stock selection criteria
+│   ├── market_data_prompt.txt     # Market data collection format
+│   ├── news_analyst_prompt.txt    # News analysis guidelines
+│   └── price_recommender_prompt.txt # Recommendation format
+├── requirements.txt           # Python dependencies
+└── README.md                 # This documentation
+```
+
+### Key Files Explained
+
+**main.py**:
+- Initializes MCP client with Bright Data
+- Creates four specialized agents with custom prompts
+- Sets up LangGraph supervisor for workflow management
+- Handles streaming responses and message formatting
+
+**utils.py**:
+- `get_large_language_model()`: LLM provider selection with fallbacks
+- `load_prompt_from_file()`: Dynamic prompt loading from files
+- `pretty_print_messages()`: Formatted output display
+
+**prompts/**: Each file defines the behavior and output format for a specific agent
+
+## 🚀 Running the System
+
+### Basic Usage
+
+```bash
+# Start the system
+python main.py
+
+# Enter your query when prompted
+# Example: "Find technology stocks for short-term trading"
+```
+
+### Programmatic Usage
+
+```python
+from main import run_agent
+import asyncio
+
+# Run a stock recommendation query
+result = asyncio.run(run_agent("Find dividend-paying stocks on NYSE"))
+```
 
 ### Example Workflow Output
 
