@@ -103,13 +103,8 @@ The supervisor agent acts as the central coordinator, managing the sequential ex
 - Time horizon for the trade
 - Detailed reasoning based on all collected data
 
-## 🔌 Model Context Protocol (MCP) Integration
-
-### What is MCP?
-
+## Bright Data MCP Server
 Model Context Protocol (MCP) is a standardized way for AI applications to interact with external data sources and tools. It provides a unified interface for accessing real-time market data, news, and other financial information.
-
-### Bright Data MCP Server
 
 This system integrates with Bright Data's MCP server to access:
 
@@ -146,7 +141,7 @@ client = MultiServerMCPClient({
 - **stdio transport**: Standard input/output communication
 - **Environment variables**: Secure API token management
 
-### MCP Tools Available
+### MCP Tools
 
 The Bright Data MCP server provides various tools that agents can use:
 
@@ -216,4 +211,4 @@ Each agent receives context from previous agents:
 
 - **Bright Data**: Real-time market data and news
 - **Ollama**: Local LLM inference
-- **OpenAI**: Cloud LLM fallback
+- **OpenAI**: Cloud LLM inference
