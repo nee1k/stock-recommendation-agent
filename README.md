@@ -21,7 +21,7 @@ User Query → Supervisor Agent → Sequential Agent Workflow → Comprehensive 
                 ↓
     ┌─────────────────────────────────────────────────────────┐
     │                 Bright Data MCP Server                  │
-    │           (Real-time market data & news)               │
+    │           (Real-time market data & news)                │
     └─────────────────────────────────────────────────────────┘
 ```
 
@@ -46,6 +46,7 @@ The supervisor agent acts as the central coordinator, managing the sequential ex
 **Role**: Initial Stock Selection and Screening
 
 **Input**: User query (e.g., "Find technology stocks for short-term trading")
+
 **Output**: 2-3 promising NYSE-listed stocks with reasoning
 
 **Process**:
@@ -67,6 +68,7 @@ The supervisor agent acts as the central coordinator, managing the sequential ex
 **Role**: Real-time Market Data Collection and Analysis
 
 **Input**: Stock tickers from Stock Finder Agent
+
 **Output**: Comprehensive market data for each stock
 
 **Data Collected**:
@@ -82,6 +84,7 @@ The supervisor agent acts as the central coordinator, managing the sequential ex
 **Role**: News Sentiment Analysis and Impact Assessment
 
 **Input**: Stock tickers and market context
+
 **Output**: Recent news summary with sentiment classification
 
 **Analysis Process**:
@@ -94,6 +97,7 @@ The supervisor agent acts as the central coordinator, managing the sequential ex
 **Role**: Final Trading Recommendations and Strategy
 
 **Input**: Combined data from all previous agents
+
 **Output**: Actionable trading recommendations
 
 **Recommendation Components**:
