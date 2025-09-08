@@ -43,7 +43,7 @@ ENABLE_MC_SIMILARITY=False
 #### Option 1: Standalone (requires external services)
 ```bash
 # Build and run the model recommendation agent
-docker-compose up model-recommendation-agent
+docker-compose up model-placement-agent
 ```
 
 #### Option 2: With Patra MCP Server
@@ -68,10 +68,10 @@ docker-compose --profile neo4j --profile patra-server --profile ollama up
 
 ```bash
 # Build the Docker image
-docker build -t model-recommendation-agent .
+docker build -t model-placement-agent .
 
 # Or use docker-compose
-docker-compose build model-recommendation-agent
+docker-compose build model-placement-agent
 ```
 
 ## Architecture
@@ -119,7 +119,7 @@ Add new prompt files to the `prompts/` directory and reference them in your code
 
 Check container logs:
 ```bash
-docker-compose logs model-recommendation-agent
+docker-compose logs model-placement-agent
 ```
 
 ## Contributing
